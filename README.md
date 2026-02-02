@@ -278,6 +278,23 @@ Create two integral sensors:
 
 Grid import and export sensors are not currently available in this integration. These values would need to be derived from the available power sensors or added in a future update if the Modbus registers support them.
 
+### Solakon PowerTracker IR Integration
+
+You can integrate the Solakon PowerTracker IR via Home Assistant's REST sensor. Add the following to your `configuration.yaml`:
+
+```yaml
+rest:
+  - resource: "http://<TRACKER_IP>/api/v1/status"
+    scan_interval: 1
+    sensor:
+      - name: "Solakon PowerTracker IR"
+        value_template: "{{ value_json.extracted.instantaneous_power_w }}"
+```
+
+Replace `<TRACKER_IP>` with the IP address of your PowerTracker IR.
+
+> **Note**: After adding this configuration, reload the REST integration via Developer Tools → YAML → REST. A full Home Assistant restart is not required.
+
 ## Automation Examples
 
 ### Battery Power Monitoring
