@@ -9,7 +9,7 @@ on:
 jobs:
   hassfest:
     name: Hassfest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout repository
         uses: actions/checkout@v6
@@ -17,7 +17,7 @@ jobs:
         uses: home-assistant/actions/hassfest@master
   hacs:
     name: HACS
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout repository
         uses: actions/checkout@v6
